@@ -1,7 +1,10 @@
 <?php
 namespace Includes\Pages;
 
-class Admin {
+require_once plugin_dir_path(dirname(__FILE__, 2)).'\includes\Base\BaseController.php';
+use \Includes\Base\BaseController;
+
+class Admin extends BaseController {
   public function register(){
     add_action('admin_menu', array($this, 'add_admin_pages'));
   }
@@ -13,6 +16,6 @@ class Admin {
 
   public function admin_index(){
     // require templates
-    require_once PLUGIN_PATH.'/templates/admin.php';
+    require_once $this->plugin_path.'/templates/admin.php';
   }
 }

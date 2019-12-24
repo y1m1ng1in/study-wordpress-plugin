@@ -1,8 +1,6 @@
 <?php
 namespace Includes;
 
-//echo '<script>console.log(".....")</script>';
-
 require_once plugin_dir_path(__FILE__).'Pages\Admin.php';
 require_once plugin_dir_path(__FILE__).'Base\Enqueue.php';
 require_once plugin_dir_path(__FILE__).'Base\SettingsLinks.php';

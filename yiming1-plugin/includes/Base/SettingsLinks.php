@@ -1,15 +1,12 @@
 <?php
 namespace Includes\Base;
 
-class SettingsLinks {
-  protected $plugin;
+require_once plugin_dir_path(__FILE__).'BaseController.php';
+use \Includes\Base\BaseController;
 
-  function __construct(){
-    $this->plugin = PLUGIN_NAME;
-  }
-
+class SettingsLinks extends BaseController {
   public function register(){
-    add_filter("plugin_action_links_$this->plugin", array($this, 'settings_links'));
+    add_filter("plugin_action_links_$this->plugin_name", array($this, 'settings_links'));
   }
 
   public function settings_links($links){
