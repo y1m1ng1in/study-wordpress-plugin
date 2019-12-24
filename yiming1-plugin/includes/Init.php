@@ -5,12 +5,14 @@ namespace Includes;
 
 require_once plugin_dir_path(__FILE__).'Pages\Admin.php';
 require_once plugin_dir_path(__FILE__).'Base\Enqueue.php';
+require_once plugin_dir_path(__FILE__).'Base\SettingsLinks.php';
 
 final class Init { 
   public static function get_services(){
     return [
       Pages\Admin::class,
       Base\Enqueue::class,
+      Base\SettingsLinks::class,
     ];
   }
 

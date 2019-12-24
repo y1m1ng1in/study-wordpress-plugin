@@ -18,7 +18,25 @@ use Includes;
 
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('PLUGIN_URL', plugin_dir_url(__FILE__));
+define('PLUGIN_NAME', plugin_basename(__FILE__));
 
 if(class_exists('Includes\\Init')){
   Includes\Init::register_services();
 }
+
+require_once plugin_dir_path(__FILE__).'/includes/Base/Activate.php';
+require_once plugin_dir_path(__FILE__).'/includes/Base/Deactivate.php';
+
+use Includes\Base\Activate;
+use Includes\Base\Deactivate;
+
+function activate_yiming1_plugin(){
+  Activate::activate();
+}
+
+function deactivate_yiming1_plugin(){
+  Deactivate::deactivate();
+}
+
+register_activation_hook(__FILE__, 'activate_yiming1_plugin');
+register_deactivation_hook(__FILE__, 'deactivate_yiming1_plugin');
