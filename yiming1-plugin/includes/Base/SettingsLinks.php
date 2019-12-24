@@ -2,6 +2,7 @@
 namespace Includes\Base;
 
 require_once plugin_dir_path(__FILE__).'BaseController.php';
+
 use \Includes\Base\BaseController;
 
 class SettingsLinks extends BaseController {
