@@ -14,7 +14,6 @@ Author URI:
 defined('ABSPATH') or die('you cannot access this file');
 
 require_once plugin_dir_path(__FILE__).'/includes/Init.php';
-use Includes;
 
 if(class_exists('Includes\\Init')){
   Includes\Init::register_services();
