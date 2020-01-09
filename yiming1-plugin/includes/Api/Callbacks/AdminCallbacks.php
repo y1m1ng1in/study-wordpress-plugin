@@ -30,6 +30,10 @@ class AdminCallbacks extends BaseController {
     echo 'check section';
   }
 
+  public function checkbox_sanitize(){
+    
+  }
+
   public function yiming1_text_example(){
     $value = esc_attr(get_option('text_example'));
 

@@ -12,7 +12,7 @@
     <div id="tab-1" class="tab-pane active">
       <form method="post" action="options.php">
         <?php 
-          settings_fields('yiming1_option_group');  # option_group
+          settings_fields('yiming1_plugin_settings');  # option_group
           do_settings_sections('yiming1_plugin'); # slug of the page
           submit_button();
         ?>
