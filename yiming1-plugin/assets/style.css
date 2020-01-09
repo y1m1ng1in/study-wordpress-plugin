@@ -33,10 +33,10 @@
 .nav-tab > li.active > a,
 .nav-tab > li.active > a:hover,
 .nav-tab > li.active > a:focus {
- color: #555;
- cursor: default;
- background-color: #fff;
- border: transparent;
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: transparent;
 }
 
 .tab-content .tab-pane {
@@ -49,5 +49,62 @@
   display: block;
   padding: 10px;
   background-color: #fff;
+  -webkit-box-shadow: 0px 5px 4px -2px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 5px 4px -2px rgba(0, 0, 0, 0.15);
+}
+
+div.ui-toggle {
+  margin: 0;
+  padding: 0;
+}
+
+div.ui-toggle input[type="checkbox"] {
+  display: none;
+}
+
+div.ui-toggle input[type="checkbox"]:checked + label {
+  border-color: #427CDC;
+  background: #427CDC;
+  -webkit-box-shadow: inset 0 0 0 10px #427CDC;
+  box-shadow: inset 0 0 0 10px #427CDC;
+}
+
+div.ui-toggle input[type="checkbox"]:checked + label > div {
+  margin-left: 20px;
+}
+
+div.ui-toggle label {
+  -webkit-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  display: inline-block;
+  position: relative;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #374140;
+  -webkit-box-shadow: inset 0 0 0 0 #427CDC;
+  box-shadow: inset 0 0 0 0 #427CDC;
+  border: 2px solid #374140;
+  border-radius: 22px;
+  width: 40px;
+  height: 20px;
+}
+
+div.ui-toggle label div {
+  -webkit-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  background: #FFFFFF;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+div.ui-toggle label:hover,
+div.ui-toggle label > div:hover {
+  cursor: pointer;
 }
