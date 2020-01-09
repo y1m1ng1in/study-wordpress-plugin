@@ -85,53 +85,14 @@ class Admin extends BaseController {
   }
 
   public function set_settings(){
-    $args = [
-      [
+    $args = array();
+    foreach($this->managers as $id => $title){
+      $args[] = [
         'option_group' => 'yiming1_plugin_settings',
-        'option_name' => 'cpt_manager',
+        'option_name' => $id,
         'callback' => array($this->callback_manager, 'checkbox_sanitize'),
-      ],
-      [
-        'option_group' => 'yiming1_plugin_settings',
-        'option_name' => 'taxonomy_manager',
-        'callback' => array($this->callback_manager, 'checkbox_sanitize'),
-      ],
-      [
-        'option_group' => 'yiming1_plugin_settings',
-        'option_name' => 'media_widget',
-        'callback' => array($this->callback_manager, 'checkbox_sanitize'),
-      ],
-      [
-        'option_group' => 'yiming1_plugin_settings',
-        'option_name' => 'gallery_manager',
-        'callback' =>array($this->callback_manager, 'checkbox_sanitize'),
-      ],
-      [
-        'option_group' => 'yiming1_plugin_settings',
-        'option_name' => 'testimonial_manager',
-        'callback' => array($this->callback_manager, 'checkbox_sanitize'),
-      ],
-      [
-        'option_group' => 'yiming1_plugin_settings',
-        'option_name' => 'templates_manager',
-        'callback' => array($this->callback_manager, 'checkbox_sanitize'),
-      ],
-      [
-        'option_group' => 'yiming1_plugin_settings',
-        'option_name' => 'login_manager',
-        'callback' => array($this->callback_manager, 'checkbox_sanitize'),
-      ],
-      [
-        'option_group' => 'yiming1_plugin_settings',
-        'option_name' => 'membership_manager',
-        'callback' => array($this->callback_manager, 'checkbox_sanitize'),
-      ],
-      [
-        'option_group' => 'yiming1_plugin_settings',
-        'option_name' => 'chat_manager',
-        'callback' => array($this->callback_manager, 'checkbox_sanitize'),
-      ],
-    ];
+      ];
+    }
     $this->settings->set_settings($args);
   }
 
@@ -148,107 +109,20 @@ class Admin extends BaseController {
   }
 
   public function set_fields(){
-    $args = [
-      [
-        'id' => 'cpt_manager', # must identical to the option name
-        'title' => 'Activate Custom Post Type',
+    $args = array();
+    foreach($this->managers as $id => $title){
+      $args[] = [
+        'id' => $id, # must identical to the option name
+        'title' => $title,
         'callback' => array($this->callback_manager, 'checkbox_field'),
         'page' => 'yiming1_plugin', # refer to the menu slug
         'section' => 'yiming1_admin_index', # section id
         'args' => array(
-          'label_for' => 'cpt_manager',
+          'label_for' => $id,
           'class' => 'ui-toggle',
         ),
-      ],
-      [
-        'id' => 'taxonomy_manager', # must identical to the option name
-        'title' => 'Activate Taxonomy Manager',
-        'callback' => array($this->callback_manager, 'checkbox_field'),
-        'page' => 'yiming1_plugin', # refer to the menu slug
-        'section' => 'yiming1_admin_index', # section id
-        'args' => array(
-          'label_for' => 'taxonomy_manager',
-          'class' => 'ui-toggle',
-        ),
-      ],
-      [
-        'id' => 'media_widget', # must identical to the option name
-        'title' => 'Activate Media Widget',
-        'callback' => array($this->callback_manager, 'checkbox_field'),
-        'page' => 'yiming1_plugin', # refer to the menu slug
-        'section' => 'yiming1_admin_index', # section id
-        'args' => array(
-          'label_for' => 'media_widget',
-          'class' => 'ui-toggle',
-        ),
-      ],
-      [
-        'id' => 'gallery_manager', # must identical to the option name
-        'title' => 'Activate Gallery Manager',
-        'callback' => array($this->callback_manager, 'checkbox_field'),
-        'page' => 'yiming1_plugin', # refer to the menu slug
-        'section' => 'yiming1_admin_index', # section id
-        'args' => array(
-          'label_for' => 'gallery_manager',
-          'class' => 'ui-toggle',
-        ),
-      ],
-      [
-        'id' => 'testimonial_manager', # must identical to the option name
-        'title' => 'Activate Testimonial Manager',
-        'callback' => array($this->callback_manager, 'checkbox_field'),
-        'page' => 'yiming1_plugin', # refer to the menu slug
-        'section' => 'yiming1_admin_index', # section id
-        'args' => array(
-          'label_for' => 'testimonial_manager',
-          'class' => 'ui-toggle',
-        ),
-      ],
-      [
-        'id' => 'templates_manager', # must identical to the option name
-        'title' => 'Activate Templates Manager',
-        'callback' => array($this->callback_manager, 'checkbox_field'),
-        'page' => 'yiming1_plugin', # refer to the menu slug
-        'section' => 'yiming1_admin_index', # section id
-        'args' => array(
-          'label_for' => 'templates_manager',
-          'class' => 'ui-toggle',
-        ),
-      ],
-      [
-        'id' => 'login_manager', # must identical to the option name
-        'title' => 'Activate Login Manager',
-        'callback' => array($this->callback_manager, 'checkbox_field'),
-        'page' => 'yiming1_plugin', # refer to the menu slug
-        'section' => 'yiming1_admin_index', # section id
-        'args' => array(
-          'label_for' => 'login_manager',
-          'class' => 'ui-toggle',
-        ),
-      ],
-      [
-        'id' => 'membership_manager', # must identical to the option name
-        'title' => 'Activate Membership Manager',
-        'callback' => array($this->callback_manager, 'checkbox_field'),
-        'page' => 'yiming1_plugin', # refer to the menu slug
-        'section' => 'yiming1_admin_index', # section id
-        'args' => array(
-          'label_for' => 'membership_manager',
-          'class' => 'ui-toggle',
-        ),
-      ],
-      [
-        'id' => 'chat_manager', # must identical to the option name
-        'title' => 'Activate Chat Manager',
-        'callback' => array($this->callback_manager, 'checkbox_field'),
-        'page' => 'yiming1_plugin', # refer to the menu slug
-        'section' => 'yiming1_admin_index', # section id
-        'args' => array(
-          'label_for' => 'chat_manager',
-          'class' => 'ui-toggle',
-        ),
-      ],
-    ];
+      ];
+    }
     $this->settings->set_fields($args);
   }
 }
