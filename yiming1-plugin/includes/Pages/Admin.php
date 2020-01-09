@@ -84,15 +84,20 @@ class Admin extends BaseController {
     ];
   }
 
+  /*
+    Add db entry in table "wp_options":
+      option_name = "yiming1_plugin"
+      option_value = serialized value of all options 
+  */
   public function set_settings(){
     $args = array();
-    foreach($this->managers as $id => $title){
-      $args[] = [
+    $args = [
+      [
         'option_group' => 'yiming1_plugin_settings',
-        'option_name' => $id,
+        'option_name' => 'yiming1_plugin',
         'callback' => array($this->callback_manager, 'checkbox_sanitize'),
-      ];
-    }
+      ]
+    ];
     $this->settings->set_settings($args);
   }
 
@@ -118,6 +123,7 @@ class Admin extends BaseController {
         'page' => 'yiming1_plugin', # refer to the menu slug
         'section' => 'yiming1_admin_index', # section id
         'args' => array(
+          'option_name' => 'yiming1_plugin',
           'label_for' => $id,
           'class' => 'ui-toggle',
         ),

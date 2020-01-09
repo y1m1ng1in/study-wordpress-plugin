@@ -7,20 +7,37 @@ use Includes\Base\BaseController;
 
 class ManagerCallbacks extends BaseController {
   public function checkbox_sanitize($input){
-    return (isset($input) ? true : false);
+    $output = array();
+    foreach($this->managers as $id => $title){
+      $output[$id] = isset($input[$id]) ? true : false;
+    }
+    return $output;
   }
 
   public function admin_section_manager(){
     echo 'Manager the sections of this plugin by activating checkboxs';
   }
 
+  /*
+  Example db entry in table "wp_options":
+  option_name = "yiming1_plugin"
+  option_value = 
+    {
+      s:11:"cpt_manager";b:1;s:16:"taxonomy_manager";b:1;s:12:"media_widget";
+      b:0;s:15:"gallery_manager";b:1;s:19:"testimonial_manager";b:0;s:17:"templates_manager";
+      b:0;s:13:"login_manager";b:0;s:18:"membership_manager";b:0;s:12:"chat_manager";b:0;
+    }
+  */
   public function checkbox_field($args){
     $name = $args['label_for'];
     $class = $args['class'];
-    $checkbox = get_option($name);
+    $option_name = $args['option_name'];
+    $checkbox = get_option($option_name);
+
+    $checked = (isset($checkbox[$name])) ? ($checkbox[$name] ? true : false) : false;
     echo '<div class="' . $class . '"><input type="checkbox"  id="'
-      . $name .'" name="' . $name . '" value="1" class="'. $class .'"' 
-      . ($checkbox ? 'checked' : '') . '><label for="'
+      . $name .'" name="'. $option_name . '[' . $name . ']' . '" value="1" class="'. $class .'"' 
+      . ($checked ? 'checked' : '') . '><label for="'
       . $name .'"><div></div></label></div>';
   }
 }
