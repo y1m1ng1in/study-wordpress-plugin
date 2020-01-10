@@ -13,7 +13,7 @@ class SettingsApi {
   public $fields = array();
 
   public function register(){
-    if(!empty($this->admin_pages)){
+    if(!empty($this->admin_pages) || !empty($this->subpages)){
       add_action('admin_menu', array($this, 'add_admin_menu'));
     }
     if(!empty($this->settings)){
