@@ -22,31 +22,35 @@ class AdminCallbacks extends BaseController {
     return require_once("$this->plugin_path/templates/widget.php");
   }
 
+  public function admin_gallery(){
+    return require_once("$this->plugin_path/templates/gallery.php");
+  }
+
+  public function admin_testimonial(){
+    return require_once("$this->plugin_path/templates/testimonial.php");
+  }
+
+  public function admin_templates(){
+    return require_once("$this->plugin_path/templates/template.php");
+  }
+
+  public function admin_login(){
+    return require_once("$this->plugin_path/templates/login.php");
+  }
+
+  public function admin_membership(){
+    return require_once("$this->plugin_path/templates/membership.php");
+  }
+
+  public function admin_chat(){
+    return require_once("$this->plugin_path/templates/chat.php");
+  }
+
   public function yiming1_options_group($input){
     return $input;
   }
 
   public function yiming1_admin_section(){
     echo 'check section';
-  }
-
-  public function checkbox_sanitize(){
-    
-  }
-
-  public function yiming1_text_example(){
-    $value = esc_attr(get_option('text_example'));
-
-    // the input name must identical to the field id decleard in Admin.php
-    echo '<input type="text" class="regular-text" name="text_example" 
-      value="'. $value .'"></input>';
-  }
-
-  public function yiming1_first_name(){
-    $value = esc_attr(get_option('first_name'));
-
-    // the input name must identical to the field id decleard in Admin.php
-    echo '<input type="text" class="regular-text" name="first_name" 
-      value="'. $value .'"></input>';
   }
 }

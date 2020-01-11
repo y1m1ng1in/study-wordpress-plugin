@@ -14,8 +14,6 @@ use \Includes\Api\Callbacks\ManagerCallbacks;
 class Dashboard extends BaseController {
   public $settings;
 
-  //public $subpages;
-
   public $admin_pages;
 
   public $callbacks;
@@ -28,16 +26,12 @@ class Dashboard extends BaseController {
 
     $this->set_pages();
 
-    //$this->set_subpages();
-
     $this->set_settings();
     $this->set_sections();
     $this->set_fields();
 
     $this->settings
          ->add_pages($this->admin_pages)
-         //->with_subpage('Dashboard')
-         //->add_subpages($this->subpages)
          ->register();
   }
 
@@ -54,37 +48,6 @@ class Dashboard extends BaseController {
       ]
     ];
   }
-
-    /*
-  public function set_subpages(){
-    $this->subpages = [
-      [
-        'parent_slug' => 'yiming1_plugin', 
-        'page_title' => 'Custom Post Types',
-        'menu_title' => 'CPTs', 
-        'capability' => 'manage_options', 
-        'menu_slug' => 'yiming1_plugin_cpt', 
-        'callback' => array($this->callbacks, 'admin_cpt'),
-      ], # subpages don't have icon url and position
-      [
-        'parent_slug' => 'yiming1_plugin', 
-        'page_title' => 'Custom Taxonomies',
-        'menu_title' => 'Taxonomies', 
-        'capability' => 'manage_options', 
-        'menu_slug' => 'yiming1_plugin_taxonomies', 
-        'callback' => array($this->callbacks, 'admin_taxonomy'),
-      ], # subpages don't have icon url and position
-      [
-        'parent_slug' => 'yiming1_plugin', 
-        'page_title' => 'Custom Widgets',
-        'menu_title' => 'Widgets', 
-        'capability' => 'manage_options', 
-        'menu_slug' => 'yiming1_plugin_widgets', 
-        'callback' => array($this->callbacks, 'admin_widget'),
-      ], # subpages don't have icon url and position
-    ];
-  }
-  */
 
   /*
     Add db entry in table "wp_options":
