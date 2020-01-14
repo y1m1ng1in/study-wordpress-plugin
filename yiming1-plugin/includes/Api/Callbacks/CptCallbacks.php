@@ -11,17 +11,31 @@ class CptCallbacks {
   }
 
   public function cpt_sanitize($input){
-    return $input;
+    $output = get_option('yiming1_plugin_cpt');
+
+    if(count($output) == 0){
+      $output[$input['post_type']] = $input;
+      return $output;
+    }
+    
+    foreach($output as $post_type => $type_item){
+      if($post_type === $input['post_type']){
+        $output[$post_type] = $input;
+      } else {
+        $output[$input['post_type']] = $input;
+      }
+    }
+
+    return $output;
   }
 
   public function text_field($args){
     $name = $args['label_for'];
     $option_name = $args['option_name'];
     $input = get_option($option_name);
-    $value = $input[$name];
 
     echo '<input type="text" class="regular-test" id="' . $name . 
-         '" name="'. $option_name . '['. $name .']" value="'. $value .'" placeholder="'
+         '" name="'. $option_name . '['. $name .']" value="" placeholder="'
          . $args['placeholder'] .'">';
   }
 
@@ -31,10 +45,9 @@ class CptCallbacks {
     $option_name = $args['option_name'];
     $checkbox = get_option($option_name);
 
-    $checked = (isset($checkbox[$name])) ? ($checkbox[$name] ? true : false) : false;
     echo '<div class="' . $class . '"><input type="checkbox"  id="'
       . $name .'" name="'. $option_name . '[' . $name . ']' . '" value="1" class="'. $class .'"' 
-      . ($checked ? 'checked' : '') . '><label for="'
+      . '><label for="'
       . $name .'"><div></div></label></div>';
   }
 }
