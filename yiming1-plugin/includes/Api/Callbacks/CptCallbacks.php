@@ -13,6 +13,11 @@ class CptCallbacks {
   public function cpt_sanitize($input){
     $output = get_option('yiming1_plugin_cpt');
 
+    if(isset($_POST['remove'])){
+      unset($output[$_POST['remove']]);
+      return $output;
+    }
+
     if(count($output) == 0){
       $output[$input['post_type']] = $input;
       return $output;
